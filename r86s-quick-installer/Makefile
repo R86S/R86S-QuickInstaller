@@ -4,6 +4,11 @@ PKG_NAME:=r86s-quick-installer
 PKG_VERSION:=1
 PKG_RELEASE:=1
 
+PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
+PKG_CONFIG_DEPENDS := 
+
+include $(INCLUDE_DIR)/package.mk
+
 define Package/r86s-quick-installer
   SECTION:=base
   CATEGORY:=Network
@@ -16,12 +21,14 @@ define Package/r86s-quick-installer/description
  A System Installer for R86S MINIPC
 endef
 
-define Build/Configure
+define Build/Prepare
+	mkdir -p $(PKG_BUILD_DIR)
+	$(CP) ./src/* $(PKG_BUILD_DIR)
 endef
 
 define Package/r86s-quick-installer/install
-        $(INSTALL_DIR) $(1)/root/
-        $(INSTALL_BIN) $(PKG_BUILD_DIR)/src/clean-emmc.sh $(1)/root/
+        $(INSTALL_DIR) $(1)/usr/sbin
+        $(INSTALL_BIN) $(PKG_BUILD_DIR)/src/clean-emmc.sh $(1)/usr/sbin/helloworld
 endef
 
 $(eval $(call BuildPackage,r86s-quick-installer))

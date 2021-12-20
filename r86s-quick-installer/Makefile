@@ -10,11 +10,11 @@ PKG_CONFIG_DEPENDS :=
 include $(INCLUDE_DIR)/package.mk
 
 define Package/r86s-quick-installer
-  SECTION:=base
-  CATEGORY:=Network
-  DEFAULT:=y
-  TITLE:=R86S Quick System Installer
-  URL:=https://github.com/R86S/R86S-QuickInstaller
+	SECTION:=base
+	CATEGORY:=Network
+	DEFAULT:=y
+	TITLE:=R86S Quick System Installer
+	URL:=https://github.com/R86S/R86S-QuickInstaller
 endef
 
 define Package/r86s-quick-installer/description
@@ -27,8 +27,8 @@ define Build/Prepare
 endef
 
 define Package/r86s-quick-installer/install
-        $(INSTALL_DIR) $(1)/usr/sbin
-        $(INSTALL_BIN) $(PKG_BUILD_DIR)/src/clean-emmc.sh $(1)/usr/sbin/helloworld
+	$(INSTALL_DIR) $(1)/usr/sbin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/clean-emmc.sh $(1)/usr/sbin/helloworld
 endef
 
 $(eval $(call BuildPackage,r86s-quick-installer))

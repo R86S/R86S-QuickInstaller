@@ -26,6 +26,9 @@ define Build/Prepare
 	$(CP) ./src/* $(PKG_BUILD_DIR)
 endef
 
+define Build/Compile
+endef 
+
 define Package/r86s-quick-installer/install
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/clean-emmc.sh $(1)/usr/sbin/helloworld

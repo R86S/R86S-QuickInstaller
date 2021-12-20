@@ -31,7 +31,7 @@ endef
 
 define Package/r86s-quick-installer/install
 	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/clean-emmc.sh $(1)/usr/sbin/helloworld
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/clean-emmc.sh $(1)/usr/sbin/
 endef
 
 $(eval $(call BuildPackage,r86s-quick-installer))

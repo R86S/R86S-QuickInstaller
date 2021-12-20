@@ -24,7 +24,7 @@ endef
 define Build/Prepare
 	mkdir -p $(PKG_BUILD_DIR)
 	$(CP) ./src/* $(PKG_BUILD_DIR)
-	chmod +x $(PKG_BUILD_DIR)/*
+	chmod +x $(PKG_BUILD_DIR)/*.sh
 endef
 
 define Build/Compile
@@ -32,7 +32,10 @@ endef
 
 define Package/r86s-quick-installer/install
 	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/clean-emmc.sh $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/r86s-clean-emmc.sh $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/r86s-decrypt-info.sh $(1)/usr/sbin/
+	$(INSTALL_DIR) $(1)/etc
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/r86s-channel-publickey.pem $(1)/etc/
 endef
 
 $(eval $(call BuildPackage,r86s-quick-installer))

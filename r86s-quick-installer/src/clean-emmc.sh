@@ -1,1 +1,0 @@
-echo This is clean-emmc!!

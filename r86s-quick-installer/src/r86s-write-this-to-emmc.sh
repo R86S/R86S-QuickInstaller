@@ -1,4 +1,19 @@
 echo Write This System To R86S EMMC
+
+# get devices of boot
+boot_device=`mount --list | grep /boot | awk 'NR==1{print $1}' | tr -d '0-9'`
+# should not write emmc to emmc
+cmp_res=`echo $boot_device | grep mmcblk`
+if [ "$cmp_res" != "" ]
+then
+   echo "------------------------------"
+   echo "Cannot write EMMC to EMMC!!!!!"
+   echo "------------------------------"
+   echo "Cancel..."
+   sleep 1
+   exit
+fi
+
 echo WARNING!!!!!!
 echo Will Clean All Data On EMMC!!!
 echo 'Enter "confirm" to contine!:'
@@ -36,14 +51,14 @@ echo 'Do Clean EMMC....'
 ) | fdisk /dev/mmcblk0
 # write our data to emmc
 echo 'Writing Data...'
-# get devices of boot
-boot_device=`mount --list | grep /boot | awk 'NR==1{print $1}' | tr -d '0-9'`
+
 echo "Write $boot_device to /dev/mmcblk0"
 dd if=$boot_device of=/dev/mmcblk0 bs=1M count=200 oflag=direct
 (
     echo w
 ) | fdisk /dev/mmcblk0
 echo 'Done!'
+sleep 1
 
 echo ''
 echo ''

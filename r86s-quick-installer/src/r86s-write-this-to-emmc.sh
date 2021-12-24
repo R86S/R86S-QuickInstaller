@@ -75,7 +75,16 @@ mount /dev/mmcblk0p1 /tmp/r86s-temp-boot
 
 # change disk uuid for different from usb disk
 sed -i "s/root=PARTUUID=.\{36\}/root=PARTUUID=$new_uuid/g" /tmp/r86s-temp-boot/boot/grub/grub.cfg
-tune2fs /dev/sda1 -U $new_uuid
+umount /tmp/r86s-temp-boot
+
+(
+   echo "x"
+   echo "c"
+   echo "2"
+   echo $new_uuid
+   echo "w"
+   echo "y"
+) | gdisk
 
 echo 'Done!'
 sleep 1

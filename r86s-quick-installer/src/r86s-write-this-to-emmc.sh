@@ -84,7 +84,7 @@ umount /tmp/r86s-temp-boot
    echo $new_uuid
    echo "w"
    echo "y"
-) | gdisk
+) | gdisk /dev/mmcblk0
 
 echo 'Done!'
 sleep 1

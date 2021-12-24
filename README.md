@@ -8,5 +8,6 @@ R86S System Quick Installer
  - usbutils: USB devices info
  - igc: Intel I225 NIC Driver
  - mlx4: CX341/CX342 NIC Driver
+ - tune2fs: change uuid for partition
 
 sgdisk

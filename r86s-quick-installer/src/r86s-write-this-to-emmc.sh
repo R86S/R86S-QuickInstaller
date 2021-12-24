@@ -57,6 +57,26 @@ dd if=$boot_device of=/dev/mmcblk0 bs=1M count=200 oflag=direct
 (
     echo w
 ) | fdisk /dev/mmcblk0
+# add for storage p
+(
+    echo n
+    echo ''
+    echo ''
+    echo ''
+    echo w
+) | fdisk /dev/mmcblk0
+mkfs.ext4 /dev/mmcblk0p3
+
+#new uuid
+new_uuid=`uuidgen`
+
+mkdir -p /tmp/r86s-temp-boot
+mount /dev/mmcblk0p1 /tmp/r86s-temp-boot
+
+# change disk uuid for different from usb disk
+sed -i "s/root=PARTUUID=.\{36\}/root=PARTUUID=$new_uuid/g" /tmp/r86s-temp-boot/boot/grub/grub.cfg
+tune2fs /dev/sda1 -U $new_uuid
+
 echo 'Done!'
 sleep 1
 

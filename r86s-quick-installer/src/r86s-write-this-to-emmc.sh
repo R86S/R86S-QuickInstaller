@@ -53,7 +53,7 @@ echo 'Do Clean EMMC....'
 echo 'Writing Data...'
 
 echo "Write $boot_device to /dev/mmcblk0"
-dd if=$boot_device of=/dev/mmcblk0 bs=1M count=200 oflag=direct
+dd if=$boot_device of=/dev/mmcblk0 bs=1M count=500 oflag=direct
 (
     echo w
 ) | fdisk /dev/mmcblk0

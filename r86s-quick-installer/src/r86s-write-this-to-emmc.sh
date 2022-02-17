@@ -1,7 +1,9 @@
 echo Write This System To R86S EMMC
 
 # get devices of boot
-boot_device=`mount --list | grep /boot | awk 'NR==1{print $1}' | tr -d '0-9'`
+boot_device=`mount -l | grep /boot | awk 'NR==1{print $1}' | tr -d '0-9'`
+boot_data_size=`lsblk  | grep /rom | awk 'NR==1{print $4}' | tr -d 'A-Z'`
+let "dd_size=$boot_data_size+50"
 # should not write emmc to emmc
 cmp_res=`echo $boot_device | grep mmcblk`
 if [ "$cmp_res" != "" ]
@@ -53,7 +55,8 @@ echo 'Do Clean EMMC....'
 echo 'Writing Data...'
 
 echo "Write $boot_device to /dev/mmcblk0"
-dd if=$boot_device of=/dev/mmcblk0 bs=1M count=500 oflag=direct
+echo "DD SIZE: $dd_size"
+dd if=$boot_device of=/dev/mmcblk0 bs=1M count=$dd_size oflag=direct
 (
     echo w
 ) | fdisk /dev/mmcblk0

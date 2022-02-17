@@ -1,5 +1,6 @@
 # Prerequisites
 *.d
+*.vscode-ctags
 
 # Object files
 *.o

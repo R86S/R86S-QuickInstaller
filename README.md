@@ -10,5 +10,6 @@ R86S System Quick Installer
  - mlx4: CX341/CX342 NIC Driver
  - gdisk: change uuid for partition
  - lsblk: list block size for get dd size
+ - useradd: add user for smb
 
 sgdisk

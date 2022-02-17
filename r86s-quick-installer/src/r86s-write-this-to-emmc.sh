@@ -55,11 +55,11 @@ echo 'Do Clean EMMC....'
 
 mkdir /mnt/data
 
-if [ -f /usr/bin/docker ]; then
-   echo "Docker found! add auto docker config"
-   echo "/dev/mmcblkp3 /mnt/data ext4 defaults 0 0" > /etc/fstab
-   echo "/mnt/data/docker /opt/docker none bind 0 0" > /etc/fstab
-fi
+# if [ -f /usr/bin/docker ]; then
+#    echo "Docker found! add auto docker config"
+#    echo "/dev/mmcblk0p3 /mnt/data ext4 defaults 0 0" >> /etc/fstab
+#    echo "/mnt/data/docker /opt/docker none bind 0 0" >> /etc/fstab
+# fi
 
 echo 'Writing Data...'
 
@@ -101,11 +101,11 @@ umount /tmp/r86s-temp-boot
 echo 'Done!'
 sleep 1
 
-if [ -f /usr/bin/docker ]; then
-   mount -t ext4 /dev/mmcblk0p3 /mnt/data
-   mkdir -p /mnt/data/docker
-   umount /mnt/data
-fi
+# if [ -f /usr/bin/docker ]; then
+#    mount -t ext4 /dev/mmcblk0p3 /mnt/data
+#    mkdir -p /mnt/data/docker
+#    umount /mnt/data
+# fi
 echo ''
 echo ''
 echo '-----------------------------------'

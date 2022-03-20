@@ -1,3 +1,7 @@
+service network stop
+iptables -F
+ifconfig eth3 192.168.66.2 netmast 255.255.255.0
+ifconfig eth4 192.168.67.2 netmast 255.255.255.0
 echo 'while :
 do
 	trap "echo Exited!; exit;" SIGINT SIGTERM

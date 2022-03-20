@@ -24,4 +24,4 @@ tmux split-window -v
 echo 'cat /proc/cpuinfo | grep MHz' > /tmp/check_Mhz.sh
 tmux send-keys 'watch -n 1 sh /tmp/check_Mhz.sh'
 tmux send-keys enter
-screen 'tmux -2 attach-session -d'
+screen tmux -2 attach-session -d

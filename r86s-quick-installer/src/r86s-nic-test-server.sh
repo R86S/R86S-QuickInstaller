@@ -24,4 +24,4 @@ tmux selectp -t test-server.0
 tmux split-window -h
 tmux send-keys 'iperf3 -s -p 19999'
 tmux send-keys enter
-screen 'tmux -2 attach-session -d'
+screen tmux -2 attach-session -d

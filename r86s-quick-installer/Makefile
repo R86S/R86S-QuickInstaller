@@ -39,6 +39,7 @@ define Package/r86s-quick-installer/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/r86s-nic-test-server.sh $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/r86s-10g-test.sh $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/r86s-2.5g-test.sh $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/r86s-cpu-stress.sh $(1)/usr/sbin/
 	$(INSTALL_DIR) $(1)/etc
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/r86s-channel-publickey.pem $(1)/etc/
 endef

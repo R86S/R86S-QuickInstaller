@@ -11,5 +11,9 @@ R86S System Quick Installer
  - gdisk: change uuid for partition
  - lsblk: list block size for get dd size
  - useradd: add user for smb
+ - smartctl: check nvme status
+ - tmux: a nice terminal
+ - nohup: 
+ - screen:
 
 sgdisk

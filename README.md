@@ -1,7 +1,7 @@
 # R86S-QuickInstaller
 R86S System Quick Installer
 
-# Need select package
+# Need select packages
  <!-- - sgdisk: Fix GPT info
  - partx: Refresh part info -->
  - pciutils: Pci devices info
@@ -12,8 +12,18 @@ R86S System Quick Installer
  - lsblk: list block size for get dd size
  - useradd: add user for smb
  - smartctl: check nvme status
+ - coreutils-nohup
  - tmux: a nice terminal
- - nohup: 
+ - iperf3:
  - screen:
-
-sgdisk
+ - tcpdump:
+ - shadow-utils
+ - procps
+ - procps-ng-watch
+ - uuidgen
+ - stress
+# Need remove packages
+Remove some package to optimization compile time.
+ - automount
+ - autosamba
+ - unblockmusic

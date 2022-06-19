@@ -6,6 +6,7 @@ R86S System Quick Installer
  - partx: Refresh part info -->
  - pciutils: Pci devices info
  - usbutils: USB devices info
+ - fdisk
  - igc: Intel I225/I226 NIC Driver
  - mlx4: CX341/CX342 NIC Driver
  - gdisk: change uuid for partition

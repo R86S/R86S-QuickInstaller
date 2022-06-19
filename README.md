@@ -23,6 +23,7 @@ R86S System Quick Installer
  - uuidgen
  - stress
  - luci-app-dockerman
+ - resize2fs
  - kmod-mt7921e
  - kmod-mt7921s
  - kmod-mt7921u

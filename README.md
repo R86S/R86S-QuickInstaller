@@ -23,6 +23,8 @@ R86S System Quick Installer
  - uuidgen
  - stress
  - luci-app-dockerman
+ - luci-app-qbittorrent
+ - luci-app-openvpn
  - resize2fs
  - ncdu
  - kmod-mt7921e

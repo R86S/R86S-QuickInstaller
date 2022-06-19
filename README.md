@@ -22,8 +22,11 @@ R86S System Quick Installer
  - procps-ng-watch
  - uuidgen
  - stress
+ - luci-app-dockerman
 # Need remove packages
 Remove some package to optimization compile time.
  - automount
  - autosamba
  - unblockmusic
+ - luci-app-vlmcsd
+ - luci-app-wireguard

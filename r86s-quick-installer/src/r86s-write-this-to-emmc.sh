@@ -2,7 +2,7 @@ echo Write This System To R86S EMMC
 
 # get devices of boot
 boot_device=`mount -l | grep /boot | awk 'NR==1{print $1}' | tr -d '0-9'`
-boot_data_size=`lsblk  | grep /rom | awk 'NR==1{print $4}' | tr -d 'A-Z'`
+boot_data_size=`lsblk  | grep /opt/docker | awk 'NR==1{print $4}' | tr -d 'A-Z'`
 let "dd_size=$boot_data_size+50"
 # should not write emmc to emmc
 cmp_res=`echo $boot_device | grep mmcblk`
@@ -40,7 +40,7 @@ fi
 
 echo "Umount exists emmc partition"
 # umount exists mmc mount
-for a_mount in `mount --list | grep /dev/mmc | awk '{print $1}'`
+for a_mount in `mount -l | grep /dev/mmc | awk '{print $1}'`
 do
    umount $a_mount
 done
@@ -50,16 +50,10 @@ echo 'Do Clean EMMC....'
     echo p
     echo g
     echo w
-) | fdisk /dev/mmcblk0
+) | fdisk /dev/mmcblk0 > /dev/null
 # write our data to emmc
 
 mkdir /mnt/data
-
-# if [ -f /usr/bin/docker ]; then
-#    echo "Docker found! add auto docker config"
-#    echo "/dev/mmcblk0p3 /mnt/data ext4 defaults 0 0" >> /etc/fstab
-#    echo "/mnt/data/docker /opt/docker none bind 0 0" >> /etc/fstab
-# fi
 
 echo 'Writing Data...'
 
@@ -67,17 +61,24 @@ echo "Write $boot_device to /dev/mmcblk0"
 echo "DD SIZE: $dd_size"
 dd if=$boot_device of=/dev/mmcblk0 bs=1M count=$dd_size oflag=direct
 (
-    echo w
-) | fdisk /dev/mmcblk0
-# add for storage p
-(
+    echo d
+    echo 2
     echo n
     echo ''
     echo ''
     echo ''
+    echo ''
     echo w
 ) | fdisk /dev/mmcblk0
-mkfs.ext4 /dev/mmcblk0p3
+# umount exists mmc mount
+sleep 3
+for a_mount in `mount -l | grep /dev/mmc | awk '{print $1}'`
+do
+   umount $a_mount
+done
+dd if=${boot_device}2 of=/dev/mmcblk0p2
+e2fsck -fp /dev/mmcblk0p2
+resize2fs -f /dev/mmcblk0p2
 
 #new uuid
 new_uuid=`uuidgen`
@@ -101,11 +102,6 @@ umount /tmp/r86s-temp-boot
 echo 'Done!'
 sleep 1
 
-# if [ -f /usr/bin/docker ]; then
-#    mount -t ext4 /dev/mmcblk0p3 /mnt/data
-#    mkdir -p /mnt/data/docker
-#    umount /mnt/data
-# fi
 echo ''
 echo ''
 echo '-----------------------------------'

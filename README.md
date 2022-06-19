@@ -23,6 +23,13 @@ R86S System Quick Installer
  - uuidgen
  - stress
  - luci-app-dockerman
+ - kmod-mt7921e
+ - kmod-mt7921s
+ - kmod-mt7921u
+ - kmod-iwlwifi
+ - iwlwifi-firmware-ax200
+ - iwlwifi-firmware-ax210
+ - kmod-ath10k
 # Need remove packages
 Remove some package to optimization compile time.
  - automount

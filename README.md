@@ -41,3 +41,4 @@ Remove some package to optimization compile time.
  - unblockmusic
  - luci-app-vlmcsd
  - luci-app-wireguard
+ - luci-app-adbyby-plus

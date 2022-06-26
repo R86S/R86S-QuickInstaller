@@ -15,9 +15,9 @@ do
         iperf3 -c 192.168.67.1 --port 9999
 	iperf3 -c 192.168.67.1 --port 9999 -R
 done' > /tmp/2_speed.sh
-tmux new-session -s "test-client" -d 'bash /tmp/1_speed.sh'
+tmux new-session -s "test-client" -d 'sh /tmp/1_speed.sh'
 tmux split-window -h
-tmux send-keys 'bash /tmp/2_speed.sh'
+tmux send-keys 'sh /tmp/2_speed.sh'
 tmux send-keys enter
 #tmux -2 attach-session -d
 tmux split-window -v

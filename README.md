@@ -34,6 +34,9 @@ R86S System Quick Installer
  - kmod-iwlwifi
  - iwlwifi-firmware-ax200
  - iwlwifi-firmware-ax210
+ - iwlwifi-firmware-ax201
+ - wpa-supplicant: Fix Intel WIFI Client
+ - hostapd: AP Support For MT7921
  - kmod-ath10k
 # Need remove packages
 Remove some package to optimization compile time.

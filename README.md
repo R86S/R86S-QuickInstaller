@@ -38,6 +38,9 @@ R86S System Quick Installer
  - wpa-supplicant: Fix Intel WIFI Client
  - hostapd: AP Support For MT7921
  - kmod-ath10k
+ - odhcp6c: ipv6 dhcp client
+ - odhcpd: ipv6 dhcp server/relay
+ - ip6tables: ipv6 firewall
 # Need remove packages
 Remove some package to optimization compile time.
  - automount

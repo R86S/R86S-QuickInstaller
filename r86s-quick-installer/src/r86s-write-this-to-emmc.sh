@@ -1,10 +1,7 @@
 echo Write This System To R86S EMMC
-# re-read parttion table from usb disk
-partprobe /dev/sda
-sleep 1
 # get devices of boot
 boot_device=`mount -l | grep /boot | awk 'NR==1{print $1}' | tr -d '0-9'`
-boot_data_size=`lsblk  | grep /opt/docker | awk 'NR==1{print $4}' | tr -d 'A-Z'`
+boot_data_size=`lsblk  | grep 'sda2' | awk 'NR==1{print $4}' | tr -d 'A-Z'`
 let "dd_size=$boot_data_size+50"
 # should not write emmc to emmc
 cmp_res=`echo $boot_device | grep mmcblk`
@@ -39,7 +36,6 @@ then
    echo "Not confirm...Cancel..."
    exit
 fi
-
 echo "Umount exists emmc partition"
 # umount exists mmc mount
 for a_mount in `mount -l | grep /dev/mmc | awk '{print $1}'`

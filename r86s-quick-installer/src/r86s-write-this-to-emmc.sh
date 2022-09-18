@@ -1,5 +1,7 @@
 echo Write This System To R86S EMMC
-
+# re-read parttion table from usb disk
+partprobe /dev/sda
+sleep 1
 # get devices of boot
 boot_device=`mount -l | grep /boot | awk 'NR==1{print $1}' | tr -d '0-9'`
 boot_data_size=`lsblk  | grep /opt/docker | awk 'NR==1{print $4}' | tr -d 'A-Z'`

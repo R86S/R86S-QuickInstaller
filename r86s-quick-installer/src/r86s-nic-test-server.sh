@@ -2,14 +2,14 @@
 echo "TEST SERVER MODE!!"
 echo "Reboot for come back normal setting"
 sleep 1
-service network stop
+/etc/init.d/network stop
 iptables -F
-ifconfig eth0 192.168.60.1 netmast 255.255.255.0
-ifconfig eth1 192.168.61.1 netmast 255.255.255.0
-ifconfig eth2 192.168.62.1 netmast 255.255.255.0
+ifconfig eth0 192.168.60.1 netmask 255.255.255.0
+ifconfig eth1 192.168.61.1 netmask 255.255.255.0
+ifconfig eth2 192.168.62.1 netmask 255.255.255.0
 
-ifconfig eth3 192.168.66.1 netmast 255.255.255.0
-ifconfig eth4 192.168.67.1 netmast 255.255.255.0
+ifconfig eth3 192.168.66.1 netmask 255.255.255.0
+ifconfig eth4 192.168.67.1 netmask 255.255.255.0
 # 创建测试用得窗口
 #!/bin/sh 
 tmux new-session -s "test-server" -d 'iperf3 -s'

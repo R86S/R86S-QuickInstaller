@@ -1,5 +1,12 @@
 # R86S-QuickInstaller
 R86S System Quick Installer
+This repo contains script code for some factory functions
+And record some suggest select and suggest remove package for R86S 
+
+|Item|Info|
+|  ----  | ----  |
+|r86s-clean-emmc.sh|Clean all data on emmc|
+|r86s-write-this-to-emmc.sh|Write this system to emmc|
 
 # Need select packages
  <!-- - sgdisk: Fix GPT info
